@@ -37,7 +37,7 @@ int main() {
 	std::list <std::string> planner;
 	std::string task;
 	auto iter = planner.begin();
-	std::cout << "Список дел \n";
+	std::cout << "Планер \n";
 	std::cout << "Выберите действие: \n";
 	do {
 		main_menu();
@@ -63,21 +63,26 @@ int main() {
 			print(planner);
 			break;
 		case 4:
-			int num;
 			print(planner);
-			std::cout << "Введите номер задачи: ";
-			std::cin >> num;
-			iter = planner.begin();
-			advance(iter, num-1);
-			iter = planner.erase(iter);
-			break;
+			if (!(is_empty(planner))) {
+				int num;
+				std::cout << "Введите номер задачи: ";
+				std::cin >> num;
+				iter = planner.begin();
+				advance(iter, num - 1);
+				iter = planner.erase(iter);
+				break;
+			}
+			else {
+				break;
+			}
 		case 5:
-			iter = planner.begin();
 			if (is_empty(planner))
 			{
 				std::cout << "Список пуст! \n";
 			}
 			else {
+				iter = planner.begin();
 				std::cout << "Самая важная задача: " << *iter << '\n';
 			}
 			break;
