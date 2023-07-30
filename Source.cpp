@@ -4,18 +4,21 @@
 #include <stdlib.h>
 
 bool is_empty(const std::list<std::string>& planner) {
-	return planner.begin() == planner.end();
+	return planner.empty();
 }
 
 void print(const std::list<std::string>& planner) {
+	
 	if (is_empty(planner))
 	{
 		std::cout << "Список пуст! \n";
 	}
 	else {
+		int number = 1;
 		for (const auto& task : planner) {
-			auto pos = std::find(planner.begin(), planner.end(), task);
-			std::cout << std::distance(planner.begin(), pos) + 1 << ". " << task << '\n';
+			
+			std::cout << number << ". " << task << '\n';
+			++number;
 		}
 	}
 }
@@ -92,7 +95,7 @@ int main() {
 				std::cout << "Список пуст! \n";
 			}
 			else {
-				planner.erase(planner.begin(), planner.end());
+				planner.clear();
 			}
 			break;
 		default:
